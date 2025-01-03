@@ -20,7 +20,7 @@ WHERE b.id = 'ad3d81b4-a342-47b6-87eb-e4d0a3e9c627' AND b."deletedAt" IS NULL;
 /* • Listar todos los Bootcamp con sus usuarios. */
 SELECT b.id AS id_bootcamp,
         b.title AS tittle_bootcamp, 
-	    b."deletedAt",
+	b."deletedAt",
         u.id AS id_user, 
         u."firstName",  
         u."lastName"  
@@ -51,10 +51,18 @@ JOIN users u ON ub."userId" = u.id
 AND b."deletedAt" IS NULL;
 
 /* • Actualizar el usuario según su id; por ejemplo: actualizar el usuario con id=1 por Pedro Sánchez. */
-UPDATE u.id AS id_user,
-        u."firstName",  
-        u."lastName"  
-SET u."firstName" = 'Pedro', u."lastName" = 'Sánchez'
+INSERT INTO users ("id", "firstName", "lastName", "email", "createdAt", "updatedAt")
+VALUES ('054f4986-53e0-451a-bafd-58bf3e17fa61', 'Juan', 'Perez', 'jperez@correo.com', 
+NOW(), NOW());
+
+UPDATE users
+
+SET "firstName" = 'Pedro',
+        "lastName" = 'Sanchez',
+	"email" = 'p.sanchez@correo.com'
+
+WHERE id = '054f4986-53e0-451a-bafd-58bf3e17fa61';
+
 
 /* • Eliminar un usuario por id; por ejemplo: el usuario con id=1 */
 
